@@ -1,0 +1,17 @@
+# ROS2 build files
+build/
+install/
+log/
+.colcon/
+*.pyc
+__pycache__/
+
+# VSCode and system files
+.vscode/
+*.swp
+.DS_Store
+*.bak
+
+# secrets
+*.env
+*.yaml

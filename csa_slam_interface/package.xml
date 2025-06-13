@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>csa_slam_interface</name>
+  <version>0.1.0</version>
+  <description>
+    CSA SLAM Interface Node: Converts raw SLAM poses into standardized PoseStamped messages (/camera/pose).
+  </description>
+
+  <maintainer email="jack@jacklab.org">jack</maintainer>
+  <license>MIT</license>
+
+  <!-- Python 기반 빌드 도구 -->
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- 실행 의존성 -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>builtin_interfaces</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+
+  <!-- 테스트 도구 (선택) -->
+  <test_depend>pytest</test_depend>
+
+  <!-- Python 빌드 방식 지정 -->
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

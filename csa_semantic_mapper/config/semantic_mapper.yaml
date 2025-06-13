@@ -1,0 +1,40 @@
+# ========================================================
+# CSA Stage 1 - Semantic Mapper Configuration File
+# ========================================================
+
+semantic_mapper_node:
+  ros__parameters:
+      relation_thresholds:
+        near: 0.5
+        on: 0.1
+        above: 0.4
+        left_right: 0.2
+
+      frame_buffer:
+        max_size: 30
+        temporal_window: 1.5
+
+      projection:
+        camera_frame: "camera_link"
+        fx: 525.0
+        fy: 525.0
+        cx: 319.5
+        cy: 239.5
+        depth_scale: 0.001
+
+      output:
+        save_path: "/home/jack/ros2_ws/scene_graphs/"
+        save_format: "jsonl"
+        overwrite: false
+        log_scene_summary: true
+
+      visualization:
+        enabled: true
+        frame_interval: 1
+        save_images: false
+        rviz_enabled: false
+
+      debug:
+        verbose: false
+        log_level: "INFO"
+

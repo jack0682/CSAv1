@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>csa_utils</name>
+  <version>0.1.0</version>
+  <description>
+    CSA Utility Library:
+    Common support modules for logging, coordinate transformation,
+    ID management, time synchronization, scene graph visualization, and input handling.
+  </description>
+
+  <maintainer email="jack@jacklab.org">jack</maintainer>
+  <license>MIT</license>
+
+  <!-- 빌드 도구 -->
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- 런타임 의존성 -->
+  <exec_depend>csa_image_input</exec_depend>
+  <exec_depend>csa_yolo_inference</exec_depend>
+  <exec_depend>csa_slam_interface</exec_depend>
+  <exec_depend>csa_semantic_mapper</exec_depend>
+  <exec_depend>csa_launch</exec_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>numpy</exec_depend>
+  <exec_depend>matplotlib</exec_depend>
+  <exec_depend>builtin_interfaces</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+
+  <!-- 테스트 도구 -->
+  <test_depend>pytest</test_depend>
+
+  <!-- Python 패키지임을 ROS2에 알림 -->
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

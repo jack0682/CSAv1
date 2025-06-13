@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>csa_yolo_inference</name>
+  <version>0.1.0</version>
+  <description>
+    YOLOv5 + StrongSORT 기반의 ROS2 추론 노드.
+    이미지 프레임에서 객체를 감지하고 추적하여 CSA 인지 시스템에 전달합니다.
+  </description>
+
+  <maintainer email="jack@jacklab.org">jack</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+
+  <exec_depend>csa_interfaces</exec_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>cv_bridge</exec_depend>
+  <exec_depend>torch</exec_depend>
+  <exec_depend>PyYAML</exec_depend>
+  <exec_depend>opencv-python</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
