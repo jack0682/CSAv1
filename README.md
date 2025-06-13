@@ -142,11 +142,13 @@ rules; if violation, a fallback BT and human prompt are triggered.
 | Output Message | `csa_interfaces/TrackedObjectArray`      |
 
 2 · csa_slam_interface
+
 Wraps ORB-SLAM2 (stereo/RGB-D) or RTAB-Map.
 Publishes geometry_msgs/PoseStamped @ ≈30 Hz on /camera/pose.
 Automatic time-sync with YOLO frames via TF + approx-time-policy.
 
 3 · csa_semantic_mapper
+
 Projects 2-D bounding boxes into 3-D world frame:
 Builds an online scene graph (network-x) and dumps incremental
 .json logs per track (ready for Neo4J ingestion).
