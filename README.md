@@ -57,7 +57,6 @@ together deliver a full perception-to-action loop with built-in reasoning, safet
 1. [Installation Guide](#-installation--build)
 1. [Runtime Walk-through](#-runtime-flow)
 1. [Directory Layout](#-repository-layout)
-1. [Troubleshooting & FAQ](#-troubleshooting--faq)
 1. [Roadmap & Milestones](#-roadmap--milestones)
 
 ---
