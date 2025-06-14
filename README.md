@@ -85,8 +85,16 @@ source install/setup.bash
 # 4 · Run semantic mapping pipeline
 ros2 launch csa_launch sego_pipeline.launch.py \
     camera_model:=realsense bag:=false visualize:=true
-``` 
+```
 
+## SEGO System Pipeline
+![SEGO System Pipeline](SEGO_System_pipline.png)
+
+## IMAGO System Pipeline
+![IMAGO System Pipeline](IMAGO_System_pipline.png)
+
+
+---
 
 ## 🧭 High-Level Architecture
 
