@@ -21,7 +21,7 @@ for collaborative, human-centric robots
 
 CSA is a multistage robotics framework that unifies **semantic perception**, **adaptive planning**, and
 **explainable control** under a single, ROS 2–native codebase.
-It is organized into three tightly-coupled sub-architectures—**SEGO**, **IMAGO**, and **LOGOS**—that
+It is organized into three tightly-coupled sub-architectures **SEGO**, **IMAGO**, and **LOGOS** that
 together deliver a full perception-to-action loop with built-in reasoning, safety, and self-reflection.
 
 | Sub-Architecture | Core Question                 | Key Capabilities (current state)                        |
@@ -69,7 +69,7 @@ together deliver a full perception-to-action loop with built-in reasoning, safet
 sudo apt update && sudo apt install build-essential git lsb-release curl
 
 # 1 · Clone
-git clone https://github.com/<YOU>/CSA.git
+git clone https://github.com/jack0682/CSA.git
 cd CSA && git submodule update --init --recursive
 
 # 2 · Setup ROS 2 & Python env
