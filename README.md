@@ -36,17 +36,21 @@ together deliver a full perception-to-action loop with built-in reasoning, safet
 
 ---
 
-> 📘 **Learn More**: This repository is based on the system architecture and cognitive vision proposed in  
-> my own review paper:  
-> _**"Towards Cognitive Collaborative Robots: Semantic-Level Integration and Explainable Control for Human-Centric Cooperation"**_,  
-> [arXiv:2505.03815](https://arxiv.org/abs/2505.03815).  
->  
-> This paper presents the conceptual and theoretical foundation for **CSA (Cognitive Synergy Architecture)** —  
-> a modular framework that integrates semantic perception (SEGO), intention-aware planning (IMAGO),  
-> and ontological reasoning with explainable control (LOGOS).  
->  
-> ✨ This project aims to realize the vision outlined in the paper: to build robots that not only act,  
-> but also understand — **semantically, ethically, and reflectively**, in collaboration with humans.
+## 📘 Learn More
+
+This repository is based on the system architecture and cognitive vision proposed in  
+my own review papers:
+
+- [_**"Towards Cognitive Collaborative Robots: Semantic-Level Integration and Explainable Control for Human-Centric Cooperation"**_](https://arxiv.org/abs/2505.03815)
+- [_**"Cognitive Synergy Architecture: SEGO for Human-Centric Collaborative Robots"**_](https://arxiv.org/abs/2506.13149)
+
+These papers present the conceptual and theoretical foundation for **CSA (Cognitive Synergy Architecture)** —  
+a modular framework that integrates semantic perception (**SEGO**), intention-aware planning (**IMAGO**),  
+and ontological reasoning with explainable control (**LOGOS**).
+
+✨ This project aims to realize the vision outlined in these papers:  
+to build robots that not only act, but also understand —  
+**semantically, ethically, and reflectively**, in collaboration with humans.
 
 ---
 
