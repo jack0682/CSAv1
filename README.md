@@ -236,5 +236,8 @@ CSA/
 | 2025 Q3 | **IMAGO α**                     | HTN planner; LLM intent parser                 |
 | 2025 Q4 | **LOGOS α**                     | Live policy distillation + OWL safety layer    |
 | 2026 Q1 | **Multi-robot** demo            | Cross-agent shared scene graphs                |
+| 2026 Q2 | **HRI** pilot                   | Common-ground intent classifier, voice+gesture |
+| 2026 Q4 | **Science Robotics** submission | End-to-end human+robots furniture assembly     |
 
+---
 
