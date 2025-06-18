@@ -255,7 +255,7 @@ CSA/
 
 ---
 
-## 🧩 IMAGO + Panda Integrated Design
+## ⚙️ IMAGO + Panda Integrated Design
 
 ![IMAGO+Panda design Draft](IMAGOPanda_design_Draft.png) 
 
@@ -299,7 +299,7 @@ CSA/
 
 ---
 
-## 🤖 Robot Arm Requirements
+## ⚙️ Robot Arm Requirements
 
 ✅ Provides joint-level control interface (Torque / Velocity / Position)  
 ✅ Real-time control loop period <1ms (RTOS or RT-capable)  
@@ -456,7 +456,7 @@ $$
 
 ---
 
-## 🌐 Multi-Robot End-Effector Plan Synchronization
+## ⚙️ Multi-Robot End-Effector Plan Synchronization
 
 Global plan reference:
 
@@ -481,7 +481,7 @@ $$
 
 ---
 
-## 🚀 Final IMAGO Wrapping Control Structure
+## ⚙️ Final IMAGO Wrapping Control Structure
 
 $$
 \tau_{\text{actual}}(s) = H_{\text{int}}(s) C^{\text{ML}}(s) C_{\text{delay}}(s) e^{+s \Delta t} \mathcal{L} \theta_d^{\text{final}}(t)
