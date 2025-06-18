@@ -518,6 +518,48 @@ $$
 |C(j\omega) G(j\omega)| \angle e^{-j \omega \Delta t}
 $$
 
+
+---
+
+imago_controller/
+├── CMakeLists.txt                  # ROS2 + C++ 빌드 파일
+├── package.xml                      # ROS2 패키지 메타 정보
+├── launch/
+│   └── imago_controller.launch.py   # ROS2 launch 파일
+├── config/
+│   ├── controller_params.yaml       # IMAGO 파라미터 (J, B, delay 등)
+│   └── sync_params.yaml             # 다중 로봇 sync 파라미터
+├── include/
+│   └── imago_controller/
+│       ├── imago_controller.hpp          # 메인 클래스 선언
+│       ├── pole_zero_compensator.hpp     # Pole-Zero 보상기 클래스
+│       ├── delay_compensator.hpp         # Delay-aware 보상기 클래스
+│       ├── ml_estimator.hpp              # ML 기반 inertia/Coriolis/gravity 추정
+│       ├── sync_manager.hpp              # 다중 로봇 sync 관리
+│       ├── low_level_interface.hpp       # libfranka / EtherCAT 인터페이스
+│       └── utils.hpp                     # 공통 함수 (matrix ops, logging 등)
+├── src/
+│   ├── imago_controller.cpp              # 메인 control loop
+│   ├── pole_zero_compensator.cpp
+│   ├── delay_compensator.cpp
+│   ├── ml_estimator.cpp
+│   ├── sync_manager.cpp
+│   ├── low_level_interface.cpp
+│   └── main.cpp                          # ROS2 노드 진입점
+├── urdf/
+│   └── panda_with_imago.urdf.xacro       # Panda + IMAGO 추가 링크/센서 URDF
+├── meshes/
+│   └── (필요 시 custom link/EE mesh 파일)
+├── scripts/
+│   └── test_plot.py                      # Latency/torque/sync 데이터 시각화
+├── tests/
+│   └── test_imago_controller.cpp         # gtest 기반 유닛테스트
+├── docs/
+│   └── design_overview.md                # 설계 문서
+├── data_logs/
+│   └── (실험 중 생성되는 log 파일 저장)
+└── README.md                             # 전체 개요 설명
+
 - Phase margin with frequency dependency:
 
 $$
