@@ -1,15 +1,15 @@
-<!--
- ██████╗ ███████╗ ██████╗  ██████╗
-██╔═══██╗██╔════╝██╔════╝ ██╔════╝
-██║   ██║█████╗  ██║  ███╗██║  ███╗
-██║   ██║██╔══╝  ██║   ██║██║   ██║
-╚██████╔╝███████╗╚██████╔╝╚██████╔╝
- ╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝
+   ██████╗   ███████╗   █████╗ 
+  ██╔═══██╗  ██╔════╝  ██╔══██╗
+  ██║   ██║  █████╗    ███████║
+  ██║   ██║  ██╔══╝    ██╔══██║
+  ╚██████╔╝  ███████╗  ██║  ██║
+   ╚═════╝   ╚══════╝  ╚═╝  ╚═╝
+
 
 Cognitive Synergy Architecture (CSA)
 A next-generation, research-grade cognition stack
 for collaborative, human-centric robots
--->
+
 
 <p align="center">
   <img src="docs/media/csa_banner.svg" width="80%" alt="CSA banner">
