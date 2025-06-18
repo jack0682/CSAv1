@@ -245,15 +245,9 @@ CSA/
 
 ---
 
-## 🧩 IMAGO Block Diagram
-
-(*First figure: IMAGO block diagram*)
-
----
-
 ## 🧩 IMAGO + Panda Integrated Design
 
-(*Second figure: IMAGO + Panda integrated system diagram*)
+![IMAGO+Panda design Draft](IMAGO+Panda design Draft.png)
 
 ---
 
