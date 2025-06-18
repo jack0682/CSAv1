@@ -241,3 +241,281 @@ CSA/
 
 ---
 
+# IMAGO Control Architecture Backbone
+
+---
+
+## 🧩 IMAGO Block Diagram
+
+(*First figure: IMAGO block diagram*)
+
+---
+
+## 🧩 IMAGO + Panda Integrated Design
+
+(*Second figure: IMAGO + Panda integrated system diagram*)
+
+---
+
+## ⚙️ IMAGO Core Structure
+
+### High-Level Input
+
+- **TEXT QUERY**  
+  Parses user language or natural language commands into intent representations.  
+  Connected with an sLLM-based text query and answering system.
+
+- **SEGO MODULE**  
+  Provides semantic information via scene graphs.  
+  Utilizes SEGO Scene Graph and Ontology Database.
+
+---
+
+### Control Layer
+
+- **Adaptive Compensator (Pole-Zero Autonomous)**  
+  Real-time error correction based on pole-zero compensation.  
+  Receives rule/state feedback from the LOGOS MODULE for compensator adjustment.
+
+- **Self-Adjusting Controller**  
+  Adaptive control optimization.
+
+- **Real-Time Motion Executor**  
+  Executes final motion commands at the physical level.
+
+---
+
+### LOGOS Interaction
+
+- **Adaptive Compensator & LOGOS MODULE:**  
+  Pole-zero compensation rule exchange  
+  Real-time rule optimization  
+  Meta-level reasoning feedback  
+  Handshake with real-time executor  
+
+---
+
+## 🤖 Robot Arm Requirements
+
+✅ Provides joint-level control interface (Torque / Velocity / Position)  
+✅ Real-time control loop period <1ms (RTOS or RT-capable)  
+✅ Modifiable controller (Open Source or SDK provided)  
+✅ Access to high-performance sensors/drivers (Force-Torque, Encoders)  
+✅ Easy ROS2 or RTAPI integration  
+✅ Low-level bus access (e.g., EtherCAT, CANopen)  
+✅ Public SDK / HAL available  
+
+👉 Target robot arm: **Franka Emika Panda**
+
+---
+
+## ⏱ Delay Issues and Architectural Limitations
+
+- `libfranka API` provides access above the HAL wrapping layer.  
+- Torque commands are injected after internal impedance safety layers.  
+- Latency accumulates through ROS2 → API → internal RT thread → driver stack.  
+- Estimated accumulated delay: **3–5 ms**, which threatens phase margin and may induce oscillations.
+
+---
+
+## 📐 IMAGO Control Formulation
+
+### Plant Model
+
+$$
+G(s) = \frac{1}{J s^2 + B s}
+$$
+
+---
+
+### Pole-Zero Compensator Design
+
+Ideal design target:
+
+$$
+C(s) G(s) = 1
+$$
+
+Actual compensator:
+
+$$
+C(s) = J' s^2 + B' s
+$$
+
+---
+
+### Delay-Aware Controller
+
+With delay:
+
+$$
+G_d(s) = G(s) e^{-s \Delta t}
+$$
+
+Effective compensator:
+
+$$
+C(s) G_d(s) = C(s) G(s) e^{-s \Delta t}
+$$
+
+Phase margin degradation:
+
+$$
+\Phi_{\text{margin,eff}} = \Phi_{\text{design}} - 360 f \Delta t
+$$
+
+---
+
+### Delay Compensation
+
+Lead compensator form:
+
+$$
+C_{\text{delay}}(s) = \frac{\alpha T_{\text{lead}} s + 1}{T_{\text{lead}} s + 1}, \quad 0 < \alpha < 1
+$$
+
+Smith predictor (model-based):
+
+$$
+\tau_{\text{cmd}}(s) = C(s) \frac{G(s)}{G_d(s)} r(s)
+$$
+
+Final torque command:
+
+$$
+\tau_{\text{cmd}}(s) = \left( J' s^2 + B' s \right) C_{\text{delay}}(s) e^{+s \Delta t} r(s)
+$$
+
+---
+
+### Wrapping Transfer Function
+
+$$
+\tau_{\text{actual}}(s) = H_{\text{int}}(s) C(s) C_{\text{delay}}(s) e^{+s \Delta t} r(s)
+$$
+
+Where:
+
+$$
+H_{\text{int}}(s) = \frac{\theta(s)}{\tau(s)} = \frac{1}{M s^2 + B s}
+$$
+
+---
+
+### Nonlinear MIMO Dynamics
+
+$$
+M(\theta) \ddot{\theta} + C(\theta, \dot{\theta}) \dot{\theta} + G(\theta) = \tau_{\text{actual}}
+$$
+
+$$
+M(\theta) = \sum_{i=1}^6 M_i(\theta_1, \dots, \theta_i)
+$$
+
+$$
+C(\theta, \dot{\theta}) = \sum_{i=1}^6 \sum_{j=1}^6 c_{ij}(\theta) \dot{\theta}_j
+$$
+
+$$
+c_{ij}(\theta) = \frac{1}{2} \left[
+\frac{\partial M_{ij}}{\partial \theta_j} +
+\frac{\partial M_{ij}}{\partial \theta_i} +
+\frac{\partial M_{jj}}{\partial \theta_i}
+\right]
+$$
+
+$$
+G(\theta) = \sum_{i=1}^6 g_i(\theta)
+$$
+
+---
+
+## 🔧 Self-Adjusting Adaptive Control Law
+
+Adaptive update:
+
+$$
+\dot{K} = -\alpha e(t) \dot{e}(t)
+$$
+
+Lyapunov function:
+
+$$
+V = \frac{1}{2} e^\top P e, \quad \dot{V} = -e^\top Q e \leq 0
+$$
+
+With delay compensation:
+
+$$
+e_J(t - \Delta t), \quad e_B(t - \Delta t)
+$$
+
+---
+
+## 🌐 Multi-Robot End-Effector Plan Synchronization
+
+Global plan reference:
+
+$$
+\chi_d^{\text{ref}}(t)
+$$
+
+Synchronization constraint:
+
+$$
+\forall i,j: 
+\left\| \chi_d^{\text{ee,i}}(t) - \chi_d^{\text{ref}}(t) \right\| < \varepsilon_{\text{sync},ij} \quad \wedge \quad 
+\left| \Delta t^i - \Delta t^j \right| < \varepsilon_{\text{latency}}
+$$
+
+Synchronization torque:
+
+$$
+\tau_{\text{actual}}^i(s) \leftarrow \tau_{\text{actual}}^i(s) +
+K_{\text{sync}} \sum_j \left( \chi_d^{\text{ee,j}}(t) - \chi_d^{\text{ee,i}}(t) \right)
+$$
+
+---
+
+## 🚀 Final IMAGO Wrapping Control Structure
+
+$$
+\tau_{\text{actual}}(s) = H_{\text{int}}(s) C^{\text{ML}}(s) C_{\text{delay}}(s) e^{+s \Delta t} \mathcal{L} \theta_d^{\text{final}}(t)
+$$
+
+---
+
+## Notes
+
+- **Franka internal controller:**  
+  RTOS + safety layers + motor driver layers → user control applies above HAL.  
+  Internal safety core modification is not allowed.
+
+- **libfranka loop:**  
+  1 kHz control loop → 1 ms period  
+  ROS2 → C++ API call → internal RT thread  
+
+- **Delay accumulation risk:**  
+  Accumulated delay of several ms reduces phase margin, induces oscillation or overshoot.
+
+---
+
+## Potential Extended Formulations
+
+- Multi-joint Smith predictor:
+
+$$
+\tau_{\text{cmd}}(s) = \sum_{i=1}^6 C_i(s) \frac{G_i(s)}{G_{d,i}(s)} r_i(s)
+$$
+
+- Frequency response with delay:
+
+$$
+|C(j\omega) G(j\omega)| \angle e^{-j \omega \Delta t}
+$$
+
+- Phase margin with frequency dependency:
+
+$$
+\Phi_{\text{margin,eff}}(\omega) = \Phi_{\text{design}}(\omega) - 360 \frac{\omega}{2 \pi} \Delta t
+$$
