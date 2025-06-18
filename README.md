@@ -17,6 +17,16 @@ for collaborative, human-centric robots
 
 # 📚 Cognitive Synergy Architecture (CSA)
 
+---
+## ✨ Project Summary
+
+CSA (Cognitive Synergy Architecture) is an advanced ROS 2–native framework for human-centric robots.  
+It integrates perception (SEGO), planning (IMAGO), and reasoning (LOGOS) for robots that **understand**  
+their environment, **adapt** plans, and **explain** decisions in real time.  
+
+This repository contains the codebase, architecture, and demo pipelines for CSA research and development.
+---
+
 > **Modular cognition for robots that *perceive*, *reason*, and *co-think* with humans.**
 
 CSA is a multistage robotics framework that unifies **semantic perception**, **adaptive planning**, and
