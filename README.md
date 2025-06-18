@@ -247,7 +247,7 @@ CSA/
 
 ## 🧩 IMAGO + Panda Integrated Design
 
-![IMAGO+Panda design Draft](IMAGOPanda design Draft.png) 
+![IMAGO+Panda design Draft](IMAGOPanda_design_Draft.png) 
 
 ---
 
