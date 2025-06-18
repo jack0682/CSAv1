@@ -518,9 +518,15 @@ $$
 |C(j\omega) G(j\omega)| \angle e^{-j \omega \Delta t}
 $$
 
+- Phase margin with frequency dependency:
+
+$$
+\Phi_{\text{margin,eff}}(\omega) = \Phi_{\text{design}}(\omega) - 360 \frac{\omega}{2 \pi} \Delta t
+$$
 
 ---
 
+``` css
 imago_controller/
 ├── CMakeLists.txt                  # ROS2 + C++ 빌드 파일
 ├── package.xml                      # ROS2 패키지 메타 정보
@@ -560,8 +566,5 @@ imago_controller/
 │   └── (실험 중 생성되는 log 파일 저장)
 └── README.md                             # 전체 개요 설명
 
-- Phase margin with frequency dependency:
 
-$$
-\Phi_{\text{margin,eff}}(\omega) = \Phi_{\text{design}}(\omega) - 360 \frac{\omega}{2 \pi} \Delta t
-$$
+```
