@@ -20,9 +20,13 @@ for collaborative, human-centric robots
 ---
 ## ✨ Project Summary
 
+
 CSA (Cognitive Synergy Architecture) is an advanced ROS 2–native framework for human-centric robots.  
-It integrates perception (SEGO), planning (IMAGO), and reasoning (LOGOS) for robots that **understand**  
-their environment, **adapt** plans, and **explain** decisions in real time.  
+It integrates perception (**SEGO**), planning (**IMAGO**), reasoning (**ONN/LOGOS**) and meta-reasoning (**D-LOGOS**)  
+for robots that **understand**, **reason**, **adapt plans**, and **explain decisions** in real time.  
+
+CSA is not just code — it is a research journey that embodies my vision:  
+> **Robots that reason, reflect, and co-think with humans.**  
 
 This repository contains the codebase, architecture, and demo pipelines for CSA research and development.
 ---
@@ -43,6 +47,36 @@ together deliver a full perception-to-action loop with built-in reasoning, safet
 > **Status – 2025-06 14**   SEGO Stage-1 is feature-complete; IMAGO & LOGOS scaffolding is included but
 > most PRs are still **WIP**.  
 > **Road-mapped milestones** are listed [here »](#-roadmap--milestones).
+
+---
+
+
+### The CSA Stages  
+| Stage | Module | Purpose |
+|--------|--------|---------|
+| ① | **SEGO** | Semantic mapping, scene graph construction |
+| ② | **IMAGO** | Intent-driven planning, adaptive control |
+| ③ | **ONN** | Ontology Neural Network for topological reasoning |
+| ④ | **LOGOS** | Explainable decision making, reasoning trace |
+| ⑤ | **D-LOGOS** | Meta-reasoning, self-reflective rule evolution |
+
+---
+
+## 🔬 Mathematical Foundations
+
+- **Topological stability guarantee:**  
+
+$$ d_{\rm PH}(G_C(t), G_C(t+\delta)) \le C_1 \sqrt{\mathcal{L}{\rm ricci}} + C_2 \mathcal{L}{\rm ph} $$
+
+- **Phase margin under delay:**  
+
+$$ \phi_{\rm margin}^{\rm effective} = \phi_{\rm design} - 360 f_c \Delta t + \phi_{\rm comp} \ge \phi_{\rm safe} $$
+
+- **Adaptive control law:**
+
+$$ \dot{K} = -\alpha e(t) \dot{e}(t) $$ $$ V = \frac{1}{2} e^T P e $$ $$ \dot{V} = -e^T Q e \le 0 $$
+
+
 
 ---
 
