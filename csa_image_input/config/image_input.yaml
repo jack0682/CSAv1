@@ -1,0 +1,22 @@
+image_publisher_node:
+  ros__parameters:
+      mode: "dataset"
+
+      dataset:
+        rgb_path: "/home/jack/ros2_ws/src/csa_image_input/dataset/rgbd_dataset_freiburg2_desk_with_person_secret/rgb"
+        depth_path: "/home/jack/ros2_ws/src/csa_image_input/dataset/rgbd_dataset_freiburg2_desk_with_person_secret/depth"
+        camera_info_path: "/home/jack/ros2_ws/src/csa_image_input/dataset/rgbd_dataset_freiburg2_desk_with_person_secret/camera_info.yaml"
+        associations_path: "/home/jack/ros2_ws/src/csa_image_input/dataset/rgbd_dataset_freiburg2_desk_with_person_secret/associations.txt"
+
+      camera:
+        rgb_device: 0
+        depth_device: 1
+        camera_info_path: "/home/jack/ros2_ws/src/csa_image_input/dataset/rgbd_dataset_freiburg2_desk_with_person_secret/camera_info.yaml"
+
+      publish:
+        fps: 12.0
+        loop: false
+        topic_rgb: "/camera/color/image_raw"
+        topic_depth: "/camera/depth/image_raw"
+        topic_info: "/camera/color/camera_info"
+  
