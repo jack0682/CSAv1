@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<package format="3">
+  <!-- 패키지 기본 정보 -->
+  <name>csa_semantic_mapper</name>
+  <version>0.1.0</version>
+  <description>
+    CSA Stage 1 Semantic Mapper Node:
+    Converts TrackedObject and Pose data into 3D semantic coordinates,
+    manages semantic memory, and builds object-level Scene Graphs.
+  </description>
+
+  <!-- 유지보수 정보 -->
+  <maintainer email="jack@jacklab.org">jack</maintainer>
+  <license>MIT</license>
+
+  <!-- 빌드 시스템 -->
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- 필수 실행 종속성 (CSA 시스템 메시지 및 ROS2 메시지 타입) -->
+  <exec_depend>csa_interfaces</exec_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>builtin_interfaces</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>csa_interfaces</exec_depend>  <!-- 🚨 CSA 메시지 정의 패키지 -->
+
+  <!-- 알고리즘/처리용 Python 라이브러리 -->
+  <exec_depend>numpy</exec_depend>
+  <exec_depend>PyYAML</exec_depend>
+
+  <!-- 선택적: Neo4j 저장 기능 구현 시 (향후 확장 고려) -->
+  <!-- <exec_depend>neo4j</exec_depend> -->
+
+  <!-- 테스트 관련 -->
+  <test_depend>pytest</test_depend>
+
+  <!-- 패키지 등록 (필수) -->
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
